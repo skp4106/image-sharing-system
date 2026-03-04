@@ -1,82 +1,111 @@
-# image-sharing-system
+# Decentralized Image Sharing System
 
-This project facilitates decentralized image upload and sharing on the blockchain using Solidity for the smart contract and React for the front-end interface. It enables users to securely upload images to IPFS (InterPlanetary File System) and share access with specified users through smart contract functionality.
+A decentralized application that allows users to upload and share images securely using Ethereum smart contracts and IPFS storage. The system removes the need for centralized servers and enables controlled access to images through blockchain-based permissions.
+
+---
 
 ## Features
 
-- **Decentralized Storage:** Images are uploaded to IPFS, ensuring decentralized and immutable storage.
-- **Smart Contract:** Utilizes Solidity smart contracts on the Ethereum blockchain for access control and ownership management.
-- **Access Control:** Users can grant or revoke access to their uploaded images to specific individuals through the smart contract.
+* **Decentralized Storage:** Images are uploaded and stored on IPFS using Pinata.
+* **Smart Contract Integration:** Solidity smart contracts manage image ownership and access control.
+* **Secure Access:** Users can grant or revoke access to their images for specific Ethereum addresses.
+* **Blockchain Interaction:** MetaMask is used to interact with the Ethereum blockchain.
+* **User-Friendly Interface:** A simple React-based interface for uploading and viewing images.
 
-## Technologies Used
+---
 
-- **Solidity:** Smart contract development for ownership and access control.
-- **React:** Front-end interface for uploading images and managing access.
-- **IPFS:** Decentralized storage protocol for hosting uploaded images.
+## Tech Stack
+
+* **Solidity** – Smart contract development
+* **Ethereum** – Blockchain platform
+* **React.js** – Frontend user interface
+* **Hardhat** – Smart contract development and deployment
+* **IPFS / Pinata** – Decentralized file storage
+* **MetaMask** – Ethereum wallet integration
+
+---
+
+## Installation
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/skp4106/image-sharing-system.git
+cd image-sharing-system
+```
+
+### 2. Install dependencies
+
+Install Hardhat dependencies:
+
+```bash
+npm install
+```
+
+Install React frontend dependencies:
+
+```bash
+cd client
+npm install
+```
+
+---
+
+## Smart Contract Setup
+
+Compile the smart contract:
+
+```bash
+npx hardhat compile
+```
+
+Deploy the contract:
+
+```bash
+npx hardhat run scripts/deploy.js --network <network-name>
+```
+
+After deployment, copy the **contract address** and update it inside the React application.
+
+---
+
+## Running the Application
+
+Start the React application:
+
+```bash
+cd client
+npm start
+```
+
+The application will run locally and connect to MetaMask for blockchain interaction.
+
+---
+
+## Configuration
+
+* Create an account on **Pinata** to store images on IPFS.
+* Obtain **Pinata API keys**.
+* Update the API keys inside the `FileUpload.js` component.
+
+---
 
 ## Usage
 
-### Installation
+1. Connect MetaMask to the application.
+2. Upload an image which will be stored on IPFS.
+3. Grant access to specific Ethereum addresses if you want them to view the image.
+4. Other users can view the images only if they have been granted permission through the smart contract.
 
-1. Clone the repository:
+---
 
-   ```bash
-   git clone https://github.com/your-username/decentralized-image-upload.git
-   ```
-2. Install dependencies for the hardhat:
+## Future Improvements
 
-   ```bash
-   # Navigate to the root directory
-   cd Dgdrive3.0
-   # Install hardhat dependencies
-   npm install
-   ```
-3. Compile the smart contract for artifacts:
+* Image preview and gallery view
+* Multi-user image management
+* Improved UI/UX for better interaction
+* Integration with additional decentralized storage solutions
 
-   ```bash
-   # Compile Smart Contract
-   npx hardhat compile
-   ```
-4. Deploy the Solidity smart contract to an Ethereum testnet or local development environment.
-   ```bash
-   # Deploy Smart Contract
-   npx hardhat run scripts/deploy.js --network <network-name>
-   ```
-5. Install dependencies for the React front end:
-   ```bash
-   # Navigate to the React client directory
-   cd client 
-   # Install React dependencies
-   npm install
-   ```
-6. Run the react application:
-   ```bash
-   # Start React Application
-   npm start
-   ```
-   
-### Configuration
+---
 
-1. Set up environment variables:
-
-   - Obtain API keys for Pinata to interact with IPFS.
-   - Update the React component (FileUpload.js) with your Pinata API keys.
-     
-### Usage
-
-Once the setup and configuration are complete, follow these steps to utilize the decentralized image upload and sharing system:
-
-1. **Install Metamask:**
-   - Ensure Metamask is installed and configured in your browser for Ethereum interactions.
-
-2. **Update Contract Address:**
-   - After smart contract deployment, make sure to update the contract address in `App.js` within the React application.
-
-3. **Upload Image before "Get Data":**
-   - Click "Get Data" only after uploading an image on Pinata. Otherwise, it will throw an error stating "You don't have access".
-
-4. **Accessing Other User Images:**
-   - Use the "Get Data" button to access other users' images. Input the user's address in the designated box, but remember, you can only access their images if they've granted you access through the smart contract. Otherwise, it will throw an error saying "You don't have access".
-
-These steps will ensure smooth navigation and utilization of the system while maintaining access control and avoiding potential errors.
 
